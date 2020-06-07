@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Heart Space Shooter Resources/Hit.wav" type="AudioStream" id=1]
+[ext_resource path="res://HitEffect.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.548148, 0.955556, 0.992593, 1 )
+colors = PoolColorArray( 0.748148, 0.748148, 0.748148, 1, 1, 1, 1, 0.772549, 1, 1, 1, 0, 1, 1, 1, 0.243137, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 3 )
+
+[node name="HitEffect" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="HitNoise" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -15.0
+autoplay = true
+
+[node name="HitParticles" type="Particles2D" parent="."]
+amount = 6
+lifetime = 0.3
+explosiveness = 1.0
+process_material = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
