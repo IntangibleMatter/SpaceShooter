@@ -5,6 +5,7 @@ const Enemy = preload("res://Enemy.tscn")
 
 onready var spawnPoints = $SpawnPoints
 
+
 func get_spawn_position():
 	var points = spawnPoints.get_children()
 	points.shuffle()
@@ -23,4 +24,3 @@ func spawn_enemy():
 
 func _on_Timer_timeout():
 	spawn_enemy()
-	

@@ -16,9 +16,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Space Shooter"
-run/main_scene="res://World.tscn"
+run/main_scene="res://StartMenu.tscn"
 config/icon="res://Ship_large.png"
 config/windows_native_icon="res://Ship.ico"
+
+[autoload]
+
+Music="*res://Music.tscn"
+SaveAndLoad="*res://SaveAndLoad.gd"
 
 [display]
 
@@ -85,4 +90,5 @@ ui_down={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 environment/default_environment="res://default_env.tres"

@@ -5,6 +5,9 @@ const Laser = preload("res://Laser.tscn")
 const ExplosionEffect = preload("res://ExplosionEffect.tscn")
 export(int) var SPEED = 100
 
+signal player_death
+
+
 var doneyet = false 
 var timer = 0
 
@@ -43,4 +46,5 @@ func _exit_tree():
 	var explosionEffect = ExplosionEffect.instance()
 	main.add_child(explosionEffect)
 	explosionEffect.global_position = global_position
+	emit_signal("player_death")
 

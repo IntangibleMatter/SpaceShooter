@@ -6,7 +6,6 @@ export(int) var SPEED = 20
 export(int) var ARMOR = 3
 
 
-
 func _process(delta):
 	position.x -= SPEED * delta
 	
@@ -35,3 +34,5 @@ func _exit_tree():
 	if position.x > 0:
 		main.add_child(explosionEffect)
 		explosionEffect.global_position = global_position
+
+
